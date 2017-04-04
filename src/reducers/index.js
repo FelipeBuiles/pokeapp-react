@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
-import fuelSavings from './fuelSavingsReducer';
-import {routerReducer} from 'react-router-redux';
+import pokemon from './pokemonReducer'
+import metadata from './metadataReducer'
+import ajaxCallsInProgress from './ajaxStatusReducer'
+import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
-  fuelSavings,
-  routing: routerReducer
-});
+    pokemon,
+    metadata,
+    ajaxCallsInProgress,
+    routing: routerReducer
+})
 
-export default rootReducer;
+export default rootReducer

@@ -1,7 +1,7 @@
 {
-  "name": "react-slingshot",
-  "version": "5.0.0",
-  "description": "Starter kit for creating apps with React and Redux",
+  "name": "Pokéapp in React",
+  "version": "0.1.0",
+  "description": "PSL technical test using react + redux",
   "engines": {
     "npm": ">=3"
   },
@@ -28,8 +28,7 @@
     "open:cover": "npm run test:cover && open coverage/lcov-report/index.html",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
-  "author": "Cory House",
-  "license": "MIT",
+  "author": "Felipe Builes",
   "dependencies": {
     "object-assign": "4.1.0",
     "react": "15.4.1",
@@ -90,24 +89,9 @@
     "webpack-hot-middleware": "2.17.1",
     "webpack-md5-hash": "0.0.5"
   },
-  "keywords": [
-    "react",
-    "reactjs",
-    "react-router",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack",
-    "redux",
-    "flux",
-    "boilerplate",
-    "starter"
-  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/coryhouse/react-slingshot"
+    "url": "https://github.com/FelipeBuiles/pokeapp-react"
   },
   "jest": {
     "moduleNameMapper": {

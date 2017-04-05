@@ -1,8 +1,10 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux'
+import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import PokemonList from './PokemonList'
-import { browserHistory } from 'react-router'
+import InfiniteScroll from 'react-infinite-scroller'
+import CircularProgress from 'material-ui/CircularProgress'
+import * as pokemonActions from '../actions/pokemonActions'
 
 class Pokemons extends Component {
     constructor(props) {
@@ -10,13 +12,38 @@ class Pokemons extends Component {
     }
 
     render() {
-        const pokemons = this.props
-        return <PokemonList pokemons={pokemons} />
+        const { pokemons, hasMore } = this.props
+        const { loadMorePokemon } = this.props.actions
+        return (
+            <InfiniteScroll
+                pageStart={0}
+                loadMore={loadMorePokemon}
+                hasMore={hasMore}
+                initialLoad={false}
+                threshold={50}
+                loader={<CircularProgress />}>
+                <PokemonList pokemons={pokemons} />
+            </InfiniteScroll>
+        )
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return { pokemons: state.pokemon }
+const mapStateToProps = (state) => {
+    return { 
+        pokemons: state.pokemon,
+        hasMore: !!state.metadata.next
+    }
 }
 
-export default connect(mapStateToProps)(Pokemons)
+const mapDispatchToProps = (dispatch) => {
+  return {
+      actions: bindActionCreators(pokemonActions, dispatch)
+  }
+}
+
+Pokemons.propTypes = {
+    pokemons: PropTypes.array.isRequired,
+    hasMore: PropTypes.bool.isRequired
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pokemons)

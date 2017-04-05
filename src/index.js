@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader'
 import Root from './components/Root'
 
 import configureStore from './store/configureStore'
-import { loadPokemon } from './actions/pokemonActions'
+import { loadInitialPokemon, loadMorePokemon } from './actions/pokemonActions'
 
 import './styles/general.scss'
 import { syncHistoryWithStore } from 'react-router-redux'
@@ -13,7 +13,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 const store = configureStore()
-store.dispatch(loadPokemon())
+store.dispatch(loadInitialPokemon())
 const history = syncHistoryWithStore(browserHistory, store)
 
 injectTapEventPlugin()

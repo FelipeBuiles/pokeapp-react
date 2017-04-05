@@ -7,6 +7,7 @@ const gridStyle = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+    marginTop: 56
   },
   image: {
     width: '100%',
@@ -14,8 +15,7 @@ const gridStyle = {
   },
 };
 
-const PokemonList = (props) => {
-  let pokemons = props.pokemons.pokemons // wtf why
+const PokemonList = ({ pokemons }) => {
   return (
     <div style={gridStyle.root}>
       <GridList
@@ -25,7 +25,7 @@ const PokemonList = (props) => {
               <GridTile
                 key={tile.id}
                 title={tile.name}
-              >
+                titleBackground={tile.color && `rgba(${tile.color[0]}, ${tile.color[1]}, ${tile.color[2]}, 0.6)`} >
                 <Link to={`/pokemon/${tile.id}`}>
                   <img 
                     src={tile.img} 
@@ -39,7 +39,7 @@ const PokemonList = (props) => {
 };
 
 PokemonList.propTypes = {
-    pokemons: PropTypes.object.isRequired
+    pokemons: PropTypes.array.isRequired
 }
 
 export default PokemonList;

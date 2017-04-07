@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
-import pokemon from './pokemonReducer'
+import { pokemonList, currentPokemon } from './pokemonReducer'
 import metadata from './metadataReducer'
 import ajaxCallsInProgress from './ajaxStatusReducer'
 import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
-    pokemon,
+    pokemonList,
     metadata,
+    currentPokemon,
     ajaxCallsInProgress,
     routing: routerReducer
 })

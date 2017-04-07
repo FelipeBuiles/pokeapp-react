@@ -25,12 +25,14 @@
     "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/lcov-report/index.html",
-    "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
+    "publish": "node tools/publish.js"
   },
   "author": "Felipe Builes",
   "dependencies": {
     "axios": "^0.16.0",
     "babel-plugin-transform-class-properties": "^6.23.0",
+    "gh-pages": "^0.12.0",
     "material-ui": "^0.17.1",
     "node-vibrant": "3.0.0-alpha.2",
     "object-assign": "4.1.0",
@@ -43,6 +45,7 @@
     "react-router": "3.0.0",
     "react-router-redux": "4.0.7",
     "react-tap-event-plugin": "^2.0.1",
+    "recharts": "^0.22.0",
     "redux": "3.6.0",
     "redux-thunk": "2.1.0"
   },

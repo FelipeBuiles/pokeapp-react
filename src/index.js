@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader'
 import Root from './components/Root'
 
 import configureStore from './store/configureStore'
-import { loadInitialPokemon, loadMorePokemon } from './actions/pokemonActions'
+import { loadInitialPokemon } from './actions/pokemonActions'
 
 import './styles/general.scss'
 import { syncHistoryWithStore } from 'react-router-redux'

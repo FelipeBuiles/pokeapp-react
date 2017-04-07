@@ -5,10 +5,16 @@ import Header from './Header'
 
 class App extends Component {
     render() {
+        let location
+        if(this.props.location.pathname === '/') {
+            location = 'list'
+        } else {
+            location = 'details'
+        }
         return (
             <MuiThemeProvider>
                 <div>
-                    <Header />
+                    <Header location={location}/>
                     {this.props.children}
                 </div>
             </MuiThemeProvider>
@@ -17,7 +23,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-    children: PropTypes.element
+    children: PropTypes.element.isRequired,
+    location: PropTypes.object.isRequired
 }
 
 export default App

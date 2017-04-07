@@ -12,17 +12,20 @@ class Pokemons extends Component {
     }
 
     render() {
-        const { pokemons, hasMore } = this.props
+        const { pokemons, searchString, hasMore } = this.props
         const { loadMorePokemon } = this.props.actions
+        let filteredPokemon = (searchString) ? pokemons.filter(p => {
+            return p.name.includes(searchString)
+        }) : pokemons
         return (
             <InfiniteScroll
                 pageStart={0}
                 loadMore={loadMorePokemon}
-                hasMore={hasMore}
+                hasMore={!searchString && hasMore}
                 initialLoad={false}
                 threshold={50}
                 loader={<CircularProgress />}>
-                <PokemonList pokemons={pokemons} />
+                <PokemonList pokemons={filteredPokemon} />
             </InfiniteScroll>
         )
     }
@@ -30,7 +33,8 @@ class Pokemons extends Component {
 
 const mapStateToProps = (state) => {
     return { 
-        pokemons: state.pokemon,
+        pokemons: state.pokemonList,
+        searchString: state.metadata.searchString,
         hasMore: !!state.metadata.next
     }
 }
@@ -43,7 +47,9 @@ const mapDispatchToProps = (dispatch) => {
 
 Pokemons.propTypes = {
     pokemons: PropTypes.array.isRequired,
-    hasMore: PropTypes.bool.isRequired
+    hasMore: PropTypes.bool.isRequired,
+    actions: PropTypes.object.isRequired,
+    searchString: PropTypes.string
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokemons)

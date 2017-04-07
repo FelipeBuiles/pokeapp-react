@@ -8,6 +8,10 @@ export function loadPokemonSuccess(pokemon) {
     return { type: types.LOAD_POKEMON_SUCCESS, pokemon }
 }
 
+export function getSpecificPokemonSuccess(pokemon) {
+    return { type: types.GET_SPECIFIC_POKEMON_SUCCESS, pokemon }
+}
+
 export function loadInitialPokemon() {
     return dispatch => {
         dispatch(beginAjaxCall())
@@ -45,6 +49,16 @@ export function loadMorePokemon() {
                     throw(error)
                 })
         }
+    }
+}
+
+export function getPokemonById(id) {
+    return dispatch => {
+        dispatch(beginAjaxCall())
+        api.getPokemon(id)
+            .then(res => {
+                dispatch(getSpecificPokemonSuccess(res))
+            })
     }
 }
 

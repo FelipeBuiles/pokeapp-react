@@ -20,6 +20,7 @@ const PokemonList = ({ pokemons }) => {
     <div style={gridStyle.root}>
       <GridList
         cellHeight={250}
+        id={'pokemon-list'}
         cols={5}>
           {pokemons.map((tile) => (
               <GridTile

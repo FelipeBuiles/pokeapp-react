@@ -1,5 +1,6 @@
 export default {
-    pokemon: [],
+    pokemonList: [],
+    currentPokemon: {},
     metadata: {},
     searchString: '',
     ajaxCallsInProgress: 0
